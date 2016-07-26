@@ -286,11 +286,14 @@ To check your the etherbase account balance:
 Print all balances with a JavaScript function:
 ```
 function checkAllBalances() {
+	var totalBal = 0;
 	for (var acctNum in eth.accounts) {
 		var acct = eth.accounts[acctNum];
 		var acctBal = web3.fromWei(eth.getBalance(acct), "ether");
+		totalBal += parseFloat(acctBal);
 		console.log("  eth.accounts[" + acctNum + "]: \t" + acct + " \tbalance: " + acctBal + " ether");
 	}
+	console.log("  Total balance: " + totalBal + " ether");
 };
 ```
 That can then be executed with:
@@ -300,6 +303,7 @@ That can then be executed with:
   eth.accounts[1]: 0xda65665fc30803cb1fb7e6d86691e20b1826dee0 	balance: 0 ether
   eth.accounts[2]: 0xe470b1a7d2c9c5c6f03bbaa8fa20db6d404a0c32 	balance: 1 ether
   eth.accounts[3]: 0xf4dd5c3794f1fd0cdc0327a83aa472609c806e99 	balance: 6 ether
+  Total balance: 70.11848 ether
 ```
 
 Since this function will disappear after restarting geth, it can be helpful to store commonly used functions to be recalled later. The [loadScript](https://github.com/ethereum/go-ethereum/wiki/JavaScript-Console#loadscript) function makes this very easy.
