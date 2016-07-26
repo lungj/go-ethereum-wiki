@@ -289,7 +289,7 @@ function checkAllBalances() {
 	for (var acctNum in eth.accounts) {
 		var acct = eth.accounts[acctNum];
 		var acctBal = web3.fromWei(eth.getBalance(acct), "ether");
-		console.log("  eth.accounts[" + acctNum + "]: " + acct + " \tbalance: " + acctBal + " ether");
+		console.log("  eth.accounts[" + acctNum + "]: \t" + acct + " \tbalance: " + acctBal + " ether");
 	}
 };
 ```
